@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    .chat-container {
+      max-width: 500px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      padding: 16px;
+      background: #4a90e2;
+      color: white;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .chat-history {
+      padding: 16px;
+      height: 300px;
+      overflow-y: auto;
+      background: #f9f9f9;
+    }
+
+    .message {
+      margin-bottom: 12px;
+    }
+
+    .user-message {
+      text-align: right;
+    }
+
+    .user-message .bubble {
+      background: #d1eaff;
+      color: #000;
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 16px 16px 0 16px;
+      max-width: 80%;
+    }
+
+    .bot-message .bubble {
+      background: #e2e2e2;
+      color: #000;
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 16px 16px 16px 0;
+      max-width: 80%;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex-grow: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 0;
+      font-size: 16px;
+    }
+
+    .chat-input button {
+      background: #4a90e2;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background: #357ab7;
+    }
+
+    @media (max-width: 600px) {
+      .chat-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      AI Chatbot
+    </div>
+
+    <div class="chat-history">
+      {% for msg, res in history|reverse %}
+        <div class="message user-message">
+          <div class="bubble">{{ msg }}</div>
+        </div>
+        <div class="message bot-message">
+          <div class="bubble">{{ res }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <form method="POST" class="chat-input">
+      <input type="text" name="message" placeholder="Type a message..." required>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+</body>
+</html>

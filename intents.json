@@ -1,0 +1,22 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": ["hi", "hello", "hey"],
+        "responses": ["Hello there!", "Hi! How can I help you?"]
+      },
+    
+      {
+        "tag": "support",
+        "patterns": ["help", "support", "issue", "problem", "technical issue", "need assistance", "contact support"],
+        "responses": ["You can reach support at support@example.com."]
+      }
+      ,
+      {
+        "tag": "goodbye",
+        "patterns": ["bye", "goodbye", "see you"],
+        "responses": ["Goodbye!", "Talk to you later."]
+      }
+    ]
+  }
+  
